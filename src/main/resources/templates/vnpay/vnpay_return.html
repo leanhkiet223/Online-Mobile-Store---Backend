@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Thanh Toán</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        background-color:whitesmoke;
+        color:black;
+        display: flex;
+        font-size: large;
+        align-items: center;
+        font-weight: bold;
+    }
+
+    .payment-icons {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .payment-icons img {
+
+        margin: 0 10px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+    }
+</style>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <img src="images/logo.png" alt="VNPAY Icon" style="width: 150px; height: 40px; margin-right: 10px;">
+                Kết quả thanh toán
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="transaction_code">Mã giao dịch thanh toán:</label>
+                <input type="text" class="form-control" id="transaction_code" readonly th:value="${vnp_TxnRef}">
+            </div>
+            <div class="form-group">
+                <label for="amount">Số tiền:</label>
+                <input type="text" class="form-control" id="amount" readonly th:value="${#strings.substring(vnp_Amount, 0, #strings.length(vnp_Amount) - 2)}">
+            </div>
+            <div class="form-group">
+                <label for="order_info">Mô tả giao dịch:</label>
+                <input type="text" class="form-control" id="order_info" readonly th:value="${vnp_OrderInfo}">
+            </div>
+            <div class="form-group">
+                <label for="response_code">Mã lỗi thanh toán:</label>
+                <input type="text" class="form-control" id="response_code" readonly th:value="${vnp_ResponseCode}">
+            </div>
+            <div class="form-group">
+                <label for="transaction_no">Mã giao dịch tại CTT VNPAY-QR:</label>
+                <input type="text" class="form-control" id="transaction_no" readonly th:value="${vnp_TransactionNo}">
+            </div>
+            <div class="form-group">
+                <label for="bank_code">Mã ngân hàng thanh toán:</label>
+                <input type="text" class="form-control" id="bank_code" readonly th:value="${vnp_BankCode}">
+            </div>
+            <div class="form-group">
+                <label for="pay_date">Thời gian thanh toán:</label>
+                <input type="text" class="form-control" id="pay_date" readonly th:value="${vnp_PayDate}">
+            </div>
+            <div class="form-group">
+                <label for="transaction_status">Tình trạng giao dịch:</label>
+                <input type="text" class="form-control" id="transaction_status" readonly th:value="${vnp_status}">
+            </div>
+            <div class="form-group">
+                <label >Quý khách vui lòng kiểm tra Email của quý khách để nhận được thông tin mua vé</label>
+            </div>
+            <div class="payment-icons">
+                <img src="images/icon-pay-01.png" alt="">
+                <img src="images/icon-pay-02.png" alt="">
+                <img src="images/icon-pay-03.png" alt="">
+                <img src="images/icon-pay-04.png" alt="">
+                <img src="images/icon-pay-05.png" alt="">
+
+            </div>
+            <div class="form-group">
+                <button onclick="home()" class="btn btn-success">Finish</button><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Start Footer -->
+<!-- End Footer -->
+
+<!--   Core JS Link   -->
+
+<!--   Core JS Files   -->
+<script src="/assets/js/core/jquery.min.js" type="text/javascript"></script>
+<script src="/assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="/assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+<script src="/assets/js/plugins/bootstrap-switch.js"></script>
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="/assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+<!-- Chart JS -->
+<script src="/assets/js/plugins/chartjs.min.js"></script>
+<!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
+<script src="/assets/js/plugins/moment.min.js"></script>
+<script src="/assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+<!-- Black Dashboard DEMO methods, don't include it in your project! -->
+<script src="/assets/demo/demo.js"></script>
+<!-- Control Center for Black UI Kit: parallax effects, scripts for the example pages etc -->
+<script src="/assets/js/blk-design-system.min.js?v=1.0.0" type="text/javascript"></script>
+<script>
+    $(document).ready(function () {
+        blackKit.initDatePicker();
+        blackKit.initSliders();
+    });
+</script>
+<script>
+    function home() {
+        window.location.href = "http://localhost:3000/";
+    }
+</script>
+</body>
+
+</html>
